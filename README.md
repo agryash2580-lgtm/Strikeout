@@ -426,7 +426,7 @@ The explicit real-Blob check saves 3 KB, 100 KB and 650 KB synthetic records, re
 
 Hosted retry/recovery checks passed, including an isolated two-tab run. An earlier parallel run exceeded the 15-second save expectation while a large-upload check was also running. The isolated rerun passed; that coincidence does not establish the delay's cause, and latency needs further measurement.
 
-The full repair flow was previously tested on production too. Gemini returned a real hosted generated response. The unpacked Edge worker, popup and approved handoff were separately exercised. That is not comprehensive pet testing or a store-approved release. Permanent screenshots live in qa; Playwright recreates test-results. Upload success does not itself establish new runtime behavior.
+The full repair flow was previously tested on production too. Gemini returned a real hosted generated response. The unpacked Edge worker, popup and approved handoff were separately exercised. That is not comprehensive pet testing or a store-approved release. The original QA screenshots are preserved under mu20/strikeout-final/qa in the full encrypted workspace archive; the source checkout exposes the QA helper scripts. Playwright recreates test-results. Upload success does not itself establish new runtime behavior.
 
 ## Known gaps and continuation priorities
 
@@ -450,11 +450,11 @@ The fictional demonstration is /sample -> inspect -> review five occurrences -> 
 
 The repository contains the editable current website/backend/extension, artwork, fonts, installable extension ZIP, tests, setup template and detailed documentation. The handoff folder also contains an authenticated encrypted copy of local credentials, Vercel linkage and saved development records. See handoff/RESTORE.md and scripts/restore-workspace.mjs. Obtain the restore key privately from the owner; it is not committed to this public repository.
 
-A separate COMPLETE filesystem snapshot of D:\mu20, including older versions, installed dependencies, generated builds, resources, inspiration and presentation material, was captured successfully with no exclusions and encrypted. That larger 205 MB archive is saved locally at C:\Users\Yash\.codex\handoffs\Strikeout-20261030\full-workspace.tar.gz.enc. It has NOT been fully uploaded to this repository. Its checksum/metadata is in handoff/full-workspace.manifest.json. The source handoff is available immediately rather than waiting for that large historical transfer.
+A separate COMPLETE filesystem snapshot of D:\mu20, including older versions, installed dependencies, generated builds, QA screenshots, resources, inspiration and presentation material, was captured successfully with no exclusions and encrypted. The full 214,841,157-byte encrypted archive is committed in handoff/full-workspace.part-*.enc segments, with individual and combined checksums in handoff/full-workspace.manifest.json. The original combined archive is also saved locally at C:\Users\Yash\.codex\handoffs\Strikeout-20261030\full-workspace.tar.gz.enc. See handoff/RESTORE.md to reconstruct and decrypt it from this repository. The restore key is shared privately and is never committed.
 
 The private restore key is C:\Users\Yash\.codex\handoffs\Strikeout-20261030\Strikeout.restore-key.txt. The backup is a local filesystem capture, not a full production Blob database export. Extract to a new directory. Use npm ci to reproduce dependencies rather than relying on captured vendor binaries. Later runtime writes are not included.
 
-Inside the full snapshot, mu20/strikeout is the legacy implementation and mu20/strikeout-final is the current source. The ordinary repository root exposes the current source for normal development.
+Inside the full snapshot, mu20/strikeout is the legacy implementation and mu20/strikeout-final is the current source. The ordinary repository root exposes the current source for normal development. The encrypted private configuration archive was decrypted successfully during handoff; the full archive was also authenticated and its tar inventory read. The handoff folder is excluded from Vercel deployment uploads. New handoff documentation and scripts added after the snapshot remain available at the repository root.
 
 ## Team, sources and asset rights
 
