@@ -1,0 +1,9 @@
+{
+  "file": "full-workspace.tar.gz.enc",
+  "format": "STRIKEOUT1 / AES-256-GCM",
+  "bytes": 214841157,
+  "sha256": "5b12500f988f65fc05b70012f366c36d064ffa42f740c080cc3e36be421861f9",
+  "source": "Complete D:/mu20 local filesystem",
+  "captured": "2026-10-30",
+  "keyIncluded": false
+}

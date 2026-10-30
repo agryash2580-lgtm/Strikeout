@@ -193,13 +193,13 @@ The fictional demonstration is /sample -> inspect -> review five occurrences -> 
 
 ## Complete original workspace backup
 
-The owner explicitly requested all files. handoff/ contains an authenticated encrypted chunked snapshot of the whole local D:\mu20 workspace: older versions, installed dependencies, generated builds, environment/linkage files, local saved records, tests, screenshots, resources, inspiration and presentation assets present at capture. It is not just another source ZIP.
+The repository contains the editable current website/backend/extension, artwork, fonts, installable extension ZIP, tests, setup template and detailed documentation. The handoff folder also contains an authenticated encrypted copy of local credentials, Vercel linkage and saved development records. See handoff/RESTORE.md and scripts/restore-workspace.mjs. Obtain the restore key privately from the owner; it is not committed to this public repository.
 
-The repository is public, so live credentials/private records are included inside that encrypted snapshot rather than exposed in plaintext. The restore key is saved separately on the owner's computer and must be shared privately. The ordinary editable source does not need that key. All chunks and recorded hashes are needed to restore the backup.
+A separate COMPLETE filesystem snapshot of D:\mu20, including older versions, installed dependencies, generated builds, resources, inspiration and presentation material, was captured successfully with no exclusions and encrypted. That larger 205 MB archive is saved locally at C:\Users\Yash\.codex\handoffs\Strikeout-20261030\full-workspace.tar.gz.enc. It has NOT been fully uploaded to this repository. Its checksum/metadata is in handoff/full-workspace.manifest.json. The source handoff is available immediately rather than waiting for that large historical transfer.
 
-See handoff/RESTORE.md, handoff/manifest.json and scripts/restore-workspace.mjs. This is a local filesystem snapshot, not an export of every live production Blob record. Later writes are not included. Extract into a new directory rather than overwriting work. Original absolute paths/vendor binaries may not be portable; npm ci is preferred.
+The private restore key is C:\Users\Yash\.codex\handoffs\Strikeout-20261030\Strikeout.restore-key.txt. The backup is a local filesystem capture, not a full production Blob database export. Extract to a new directory. Use npm ci to reproduce dependencies rather than relying on captured vendor binaries. Later runtime writes are not included.
 
-Inside the snapshot, mu20/strikeout is the legacy version and mu20/strikeout-final is the current implementation. The repository root exposes the current version. The captured dependency/build copies are backup evidence, not the recommended editing surface.
+Inside the full snapshot, mu20/strikeout is the legacy implementation and mu20/strikeout-final is the current source. The ordinary repository root exposes the current source for normal development.
 
 ## Team, sources and asset rights
 

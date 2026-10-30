@@ -1,0 +1,8 @@
+{
+  "file": "private-local-config.tar.gz.enc",
+  "outputName": "private-local-config.tar.gz",
+  "format": "STRIKEOUT1 / AES-256-GCM",
+  "bytes": 26417,
+  "sha256": "34d17ecdf20c135f9eb4cdee8cef12009403b809b9e66d0cb529ecc9194a2da7",
+  "scope": "Local credentials, Vercel linkage and saved development records"
+}
