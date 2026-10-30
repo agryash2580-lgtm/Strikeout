@@ -1,0 +1,9 @@
+import React from 'react';
+function show(value:any){return value===undefined?'Removed':typeof value==='string'?value:JSON.stringify(value,null,2);}
+export function SaveNotice({saver,download,signIn}:any){
+ const {state}=saver;if(!['error','conflict','offline','auth'].includes(state.phase))return null;
+ return <aside className="save-notice" role="alert" aria-label="Pending workspace changes"><div className="eyebrow">YOUR DRAFT IS STILL HERE</div><h2>{state.phase==='conflict'?'Two versions need a quick review.':state.phase==='offline'?'You’re offline. We kept your edits.':state.phase==='auth'?'Sign in again to save your edits.':'We couldn’t finish saving yet.'}</h2><p>{state.phase==='conflict'?'The same information changed in this tab and the saved workspace. Other non-overlapping edits have been combined. Compare the conflicting fields before choosing.':state.detail}</p>
+  {state.conflicts?.map((item:any,index:number)=><details key={index}><summary>{item.path.replace(/\[[^\]]+\]/g,'').replaceAll('.',' / ')}</summary><div className="save-comparison"><section><h3>This tab</h3><pre>{show(item.local)}</pre></section><section><h3>Saved version</h3><pre>{show(item.remote)}</pre></section></div></details>)}
+  <div className="toolbar">{state.phase==='conflict'?<><button className="button" onClick={()=>saver.resolve('local')}>Keep this tab’s edits</button><button className="button secondary" onClick={()=>saver.resolve('remote')}>Use saved edits</button></>:state.phase==='auth'?<button className="button" onClick={signIn}>Sign in to save</button>:<button className="button" onClick={()=>void saver.retry()}>Retry saving</button>}<button className="text-button" onClick={()=>download('strikeout-pending-changes.json',saver.exportDraft(),'application/json')}>Download pending changes</button></div>
+ </aside>;
+}

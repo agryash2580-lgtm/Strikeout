@@ -1,0 +1,22 @@
+import {test,expect} from '@playwright/test';
+test('evidence is selectable in an exact report preview and incident edits require renewed review',async({page})=>{
+ await page.goto('/sample');await expect(page.getByRole('heading',{name:'Start with what you know.'})).toBeVisible();
+ await page.getByRole('link',{name:'02 Evidence',exact:true}).click();
+ await page.getByLabel('What does this show?').fill('Fictional profile using Mira’s name');
+ await page.getByLabel('Source link (optional)').fill('https://example.com/fictional-profile');
+ await page.getByRole('button',{name:'Add evidence →'}).click();
+ await page.getByRole('link',{name:'04 Requests',exact:true}).click();
+ await page.getByRole('checkbox',{name:'Fictional profile using Mira’s name',exact:true}).check();
+ await page.getByRole('button',{name:'Generate / regenerate draft'}).click();
+ const report=page.getByLabel('Exact editable report text');await expect(report).toContainText('Fictional profile using Mira’s name');
+ expect(await report.inputValue()).not.toContain('Personal phone:');
+ await page.getByRole('checkbox',{name:'I reviewed this exact text and its selected evidence.'}).check();
+ await page.getByLabel('Optional submission reference').fill('DEMO-USER-REPORTED');
+ await page.getByRole('button',{name:'I submitted this myself'}).click();
+ await expect(page.getByText(/Submission recorded by you at/)).toBeVisible();
+ await page.getByRole('link',{name:'01 Your story',exact:true}).click();
+ await page.getByLabel('Incident summary').fill('Revised fictional summary: I am uncertain which image was copied.');
+ await page.getByRole('link',{name:'04 Requests',exact:true}).click();
+ await expect(page.getByText('Case facts or evidence changed. Regenerate and review this draft.')).toBeVisible();
+ await expect(page.getByRole('button',{name:'Copy draft',exact:true})).toBeDisabled();
+});

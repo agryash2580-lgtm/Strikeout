@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.vercel/
+.env*
+.data/
+test-results/
+playwright-report/
+
+.env*
+
+!.env.example
+*.restore-key.txt
